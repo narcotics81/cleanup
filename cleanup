@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# cleans up downloaded music files
+
+# deletes text inside parenthesis within filenames
+for f in *'('*')'*; do mv -i "$f" "${f/(*)/}"; done
+
+# removes track numbers from downloaded playlist
+for f in [0-9]*; do mv "$f" "`echo $f | sed 's/^[0-9]*\W*//'`"; done
+
+# removes some of the common miscellaneous files in a folder
+rm *.jpg
+rm *.png
+rm *.nfo
